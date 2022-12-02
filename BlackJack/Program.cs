@@ -21,13 +21,13 @@ namespace ____
                 Console.WriteLine("    4. Avsluta programmet");
                 Console.WriteLine("");
 
-                int val = int.Parse(Console.ReadLine());
+                string val = (Console.ReadLine());
 
                 string namn = "Ingen";
 
                 switch(val)
                 {
-                    case 1:
+                    case "1":
 
                         Thread.Sleep(1000);
 
@@ -36,56 +36,65 @@ namespace ____
                         Random DatorDraKort = new Random();
 
                         int DatorDra = DatorDraKort.Next(1,2);
-                        int SumSpelare = KortDator.Next(1, 11);
-                        int SumDator = KortSpelare.Next(1, 11);
+                        int SumSpelare = 0;
+                        int SumDator = 0;
 
                         bool Spel = true;
 
+                        string Dra = "j";
+
                         while (Spel == true)
                         {
-
-                            string Dra = "j";
-                          
-
-                            if(Dra == "j")
-                            {
-                                Console.WriteLine("");
-                                Console.WriteLine("    Nu kommer du och datorn få varist kort");
-                                Console.WriteLine($"    Dina poäng:{SumSpelare}");
-                                Console.WriteLine($"    Datorns poäng: {SumDator}");
-                                Console.WriteLine("");
-                                Console.WriteLine("    Vill du dra ett till kort? j/n");
-                                Console.WriteLine("");
-                            }
-                            Dra = Console.ReadLine();
-
-                            if (DatorDra == 1)
-                            {
-                                SumDator = SumDator + KortDator.Next(1, 11);
-                            }
-
-                            else
-                            {
-
-                            }
-
                             switch (Dra)
                             {
                                 case "j":
+
                                     SumSpelare = SumSpelare + KortSpelare.Next(1, 11);
+
+                                    if (DatorDra == 1)
+                                    {
+                                        SumDator = SumDator + KortDator.Next(1, 11);
+                                    }
+
+                                    Console.WriteLine("");
+                                    Console.WriteLine("    Nu kommer du och datorn få varist kort");
+                                    Console.WriteLine($"    Dina poäng:{SumSpelare}");
+                                    Console.WriteLine($"    Datorns poäng: {SumDator}");
+                                    Console.WriteLine("");
+
+
+                                    break;
+
+                                case "n":
+
+                                    if (DatorDra == 1)
+                                    {
+                                        SumDator = SumDator + KortDator.Next(1, 11);
+                                    }
+
+                                    Console.WriteLine("");
+                                    Console.WriteLine("    Nu kommer du och datorn få varist kort");
+                                    Console.WriteLine($"    Dina poäng:{SumSpelare}");
+                                    Console.WriteLine($"    Datorns poäng: {SumDator}");
+                                    Console.WriteLine("");
+
+
                                     break;
 
                                 default:
+                                    Console.WriteLine("Ej giltigt");
                                     break;
+                            }
 
+                            if(SumSpelare < 21 && SumDator < 21)
+                            {
+                                Console.WriteLine("    Vill du dra ett till kort? j/n");
+                                Console.WriteLine("");
+                                Dra = Console.ReadLine();
                             }
 
                             if (SumSpelare == 21 || SumDator > 21)
                             {
-                                Console.WriteLine("    Nu kommer du och datorn få varist kort");
-                                Console.WriteLine($"    Dina poäng:{SumSpelare}");
-                                Console.WriteLine($"    Datorns poäng: {SumDator}");
-                                Console.WriteLine("");
                                 Console.WriteLine("    Du har vunnit!!!");
                                 Console.WriteLine("");
                                 Console.WriteLine("");
@@ -99,10 +108,7 @@ namespace ____
 
                             else if (SumDator == 21 || SumSpelare > 21)
                             {
-                                Console.WriteLine("    Nu kommer du och datorn få varist kort");
-                                Console.WriteLine($"    Dina poäng:{SumSpelare}");
-                                Console.WriteLine($"    Datorns poäng: {SumDator}");
-                                Console.WriteLine("");
+
                                 Console.WriteLine("    Du förlorade, datorn vann :(");
                                 Console.WriteLine("");
                                 Console.WriteLine("");
@@ -113,13 +119,12 @@ namespace ____
                         break;
 
 
-                    case 2:
-                        Console.WriteLine($"Den senaste vinnaren var: " + namn);
+                    case "2":
+                        Console.WriteLine($"Den senaste vinnaren var: {namn}");
                         Console.WriteLine();
                         break;
 
-
-                    case 3:
+                    case "3":
                         Thread.Sleep(1000);
                         Console.Write("    ");
 
@@ -156,7 +161,7 @@ namespace ____
                         string text4 = "på dealerns hand överstiger 21.";
                         foreach (char g in text4)
                         {
-                            Console.Write(g );
+                            Console.Write(g);
                             Thread.Sleep(50);
                         }
 
@@ -166,7 +171,7 @@ namespace ____
                         break;
 
 
-                    case 4:
+                    case "4":
                         Console.WriteLine("");
 
                         string text = "    Programmet avslutas";
@@ -188,6 +193,7 @@ namespace ____
                         break;
 
                     default:
+                        Console.WriteLine("Ej giltigt");
                         break;
 
                 }
