@@ -61,9 +61,8 @@ namespace ____
                                     Console.WriteLine($"    Dina poäng:{SumSpelare}");
                                     Console.WriteLine($"    Datorns poäng: {SumDator}");
                                     Console.WriteLine("");
-
-
                                     break;
+
 
                                 case "n":
 
@@ -77,9 +76,8 @@ namespace ____
                                     Console.WriteLine($"    Dina poäng:{SumSpelare}");
                                     Console.WriteLine($"    Datorns poäng: {SumDator}");
                                     Console.WriteLine("");
-
-
                                     break;
+
 
                                 default:
                                     Console.WriteLine("Ej giltigt");
@@ -115,7 +113,6 @@ namespace ____
                                 Spel = false;
                             }
                         }
-
                         break;
 
 
