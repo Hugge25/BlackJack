@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Globalization;
 
 namespace ____
@@ -7,6 +8,9 @@ namespace ____
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+
             Random KortSpelare = new Random();
             Random KortDator = new Random();
             Random DatorDraKort = new Random();
@@ -27,10 +31,12 @@ namespace ____
                 Console.WriteLine("    -----BLACK JACK-----");
                 Console.WriteLine();
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("    1. Spela BlackJack");
                 Console.WriteLine("    2. De 3 senaste vinnarna");
                 Console.WriteLine("    3. Spelets regler");
                 Console.WriteLine("    4. Avsluta programmet");
+                Console.WriteLine("    69. ? ");
                 Console.WriteLine();
 
                 string val = (Console.ReadLine());
@@ -38,11 +44,14 @@ namespace ____
                 switch (val)
                 {
                     case "1":
+                        Console.Clear();
                         int DatorDra = 0;
                         int SumSpelare = 0;
                         int SumDator = 0;
 
-                        
+                        SumSpelare = SumSpelare + KortSpelare.Next(1, 11);
+                        SumDator = SumDator + KortDator.Next(1, 11);
+
 
                         bool Spel = true;
 
@@ -50,6 +59,9 @@ namespace ____
 
                         while (Spel == true)
                         {
+
+                            
+
                             switch (Dra)
                             {
                                 case "j":
@@ -58,15 +70,21 @@ namespace ____
 
                                     SumSpelare = SumSpelare + KortSpelare.Next(1, 11);
 
+                                    DatorDra = 2;
+
                                     if (DatorDra == 2)
                                     {
                                         SumDator = SumDator + KortDator.Next(1, 11);
                                     }
-
                                     Console.WriteLine();
-                                    Console.WriteLine("    Nu kommer du och datorn få varist kort");
-                                    Console.WriteLine($"    Dina poäng:{SumSpelare}");
+                                    Console.WriteLine("    Nu kommer du och datorn två kort");
+                                    Thread.Sleep(1000);
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine($"    Dina poäng: {SumSpelare}");
+                                    Thread.Sleep(1000);
                                     Console.WriteLine($"    Datorns poäng: {SumDator}");
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Thread.Sleep(1000);
                                     Console.WriteLine();
                                     break;
 
@@ -82,14 +100,26 @@ namespace ____
 
                                     Console.WriteLine();
                                     Console.WriteLine("    Nu kommer du och datorn få varist kort");
+                                    Thread.Sleep(1000);
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine($"    Dina poäng:{SumSpelare}");
+                                    Thread.Sleep(1000);
                                     Console.WriteLine($"    Datorns poäng: {SumDator}");
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Thread.Sleep(1000);
                                     Console.WriteLine();
                                     break;
 
 
                                 default:
-                                    Console.WriteLine("Ej giltigt");
+                                    string text0 = "Ej giltigt!";
+                                    foreach (char c in text0)
+                                    {
+                                        Console.Write(c);
+                                        Thread.Sleep(50);
+                                    }
+                                    Thread.Sleep(1000);
+                                    Console.WriteLine();
                                     break;
                             }
 
@@ -142,111 +172,104 @@ namespace ____
                                 Spel = false;
                             }
                         }
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Tryck enter för meny");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
 
                     case "2":
+                        Console.Clear();
                         Console.WriteLine();
-                        string text6 = "Tre senaste vinnarna";
-                        foreach (char i in text6)
+                        string text1 = "Tre senaste vinnarna";
+                        foreach (char a in text1)
                         {
-                            Console.Write(i);
+                            Console.Write(a);
+                            Thread.Sleep(50);
+                        }
+
+                        Thread.Sleep(500);
+                        Console.WriteLine();
+                        Console.WriteLine();
+
+                        string text2 = $"1. {Vinnarna[0]}";
+                        foreach (char b in text2)
+                        {
+                            Console.Write(b);
+                            Thread.Sleep(50);
+                        }
+
+                        Thread.Sleep(500);
+                        Console.WriteLine();
+
+                        string text3 = $"2. {Vinnarna[1]}";
+                        foreach (char c in text3)
+                        {
+                            Console.Write(c);
+                            Thread.Sleep(50);
+                        }
+
+                        Thread.Sleep(500);
+                        Console.WriteLine();
+
+                        string text4 = $"3. {Vinnarna[2]}";
+                        foreach (char c in text4)
+                        {
+                            Console.Write(c);
                             Thread.Sleep(50);
                         }
 
                         Console.WriteLine();
                         Console.WriteLine();
-
-                        string text7 = $"1. {Vinnarna[0]}";
-                        foreach (char j in text7)
-                        {
-                            Console.Write(j);
-                            Thread.Sleep(50);
-                        }
-
-                        Console.WriteLine();
-
-                        string text8 = $"2. {Vinnarna[1]}";
-                        foreach (char k in text8)
-                        {
-                            Console.Write(k);
-                            Thread.Sleep(50);
-                        }
-
-                        Console.WriteLine();
-
-                        string text9 = $"3. {Vinnarna[2]}";
-                        foreach (char l in text9)
-                        {
-                            Console.Write(l);
-                            Thread.Sleep(50);
-                        }
-
-                        Console.WriteLine();
-                        Console.WriteLine();
+                        Console.WriteLine("Tryck enter för meny");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
                     case "3":
-                        Console.Write("    ");
-
-                        string text1 = "Målet i Blackjack är att få en bättre hand än dealern. För att göra det, måste du";
-                        foreach (char d in text1)
-                        {
-                            Console.Write(d);
-                            Thread.Sleep(30);
-                        }
-
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
                         Console.WriteLine();
                         Console.Write("    ");
 
-                        string text2 = "ha en hand som är högre än dealerns, utan att handens totala värde överstiger";
-                        foreach (char e in text2)
+                        string text5 = "Målet i Blackjack är att få en bättre hand än dealern. För att göra det, måste du \n    ha en hand som är högre än dealerns, utan att handens totala värde överstiger \n    21. Du kan även vinna genom att ha ett totalt värde under 22 när det totala värdet \n    på dealerns hand överstiger 21.";
+                        foreach (char c in text5)
                         {
-                            Console.Write(e);
+                            Console.Write(c);
                             Thread.Sleep(30);
                         }
+                        
 
-                        Console.WriteLine();
-                        Console.Write("    ");
 
-                        string text3 = "21. Du kan även vinna genom att ha ett totalt värde under 22 när det totala värdet";
-                        foreach (char f in text3)
-                        {
-                            Console.Write(f);
-                            Thread.Sleep(30);
-                        }
-
-                        Console.WriteLine();
-                        Console.Write("    ");
-
-                        string text4 = "på dealerns hand överstiger 21.";
-                        foreach (char g in text4)
-                        {
-                            Console.Write(g);
-                            Thread.Sleep(30);
-                        }
-
+                        Thread.Sleep(1000);
                         Console.WriteLine();
                         Console.WriteLine();
+                        Console.WriteLine("Tryck enter för meny");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
 
                     case "4":
+                        Console.Clear();
                         Console.WriteLine();
 
-                        string text = "    Programmet avslutas";
-                        foreach (char c in text)
+                        string text6 = "    Programmet avslutas";
+                        foreach (char c in text6)
                         {
                             Console.Write(c);
-                            Thread.Sleep(100);
+                            Thread.Sleep(50);
                         }
 
                         Thread.Sleep(500);
 
-                        string text0 = "...";
-                        foreach (char a in text0)
+                        string text7 = "...";
+                        foreach (char c in text7)
                         {
-                            Console.Write(a);
+                            Console.Write(c);
                             Thread.Sleep(500);
                         }
 
@@ -255,17 +278,55 @@ namespace ____
                         Avsluta = true;
                         break;
 
+                    case "69":
+                        Console.Clear();
+                        string text8 = "SHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESH";
+                        foreach (char c in text8)
+                        {
+                            Console.Write(c);
+                            Thread.Sleep(10);
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Thread.Sleep(1000);
+
+                        string text9 = "...";
+                        foreach(char c in text9)
+                        {
+                            Console.Write(c);
+                            Thread.Sleep(500);
+                        }
+
+                        string text10 = "haha get pranked";
+                        foreach(char c in text10)
+                        {
+                            Console.Write(c);
+                            Thread.Sleep(100);
+                        }
+                        Thread.Sleep(2000);
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine(":^)");
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        break;
+
                     default:
+                        Console.Clear();
                         Console.WriteLine();
                         Thread.Sleep(300);
-                        string text5 = "Ej giltigt!";
-                        foreach(char h in text5)
+                        string text11 = "Ej giltigt!";
+                        foreach(char c in text11)
                         {
-                            Console.Write(h);
+                            Console.Write(c);
                             Thread.Sleep(50);
                         }
                         Thread.Sleep(300);
                         Console.WriteLine();
+                        Console.Clear();
                         break;
                 }
             }
