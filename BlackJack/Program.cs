@@ -19,7 +19,7 @@ namespace ____
 
             string namn = "Ingen";
 
-            string[] Vinnarna = { "Tom", "Tom", "Tom" };
+            string[] Vinnarna = { "...", "...", "..." };
 
             var value = 1;
 
@@ -47,9 +47,19 @@ namespace ____
                         int SumSpelare = 0;
                         int SumDator = 0;
 
-                        SumSpelare = SumSpelare + KortSpelare.Next(1, 11);
-                        SumDator = SumDator + KortDator.Next(1, 11);
+                        SumSpelare = SumSpelare + KortSpelare.Next(1, 11) + KortSpelare.Next(1, 11);
+                        SumDator = SumDator + KortSpelare.Next(1, 11) + KortSpelare.Next(1, 11);
 
+                        Console.WriteLine();
+                        Console.WriteLine("    Nu kommer du och datorn två kort");
+                        Thread.Sleep(1000);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($"    Dina poäng: {SumSpelare}");
+                        Thread.Sleep(1000);
+                        Console.WriteLine($"    Datorns poäng: {SumDator}");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Thread.Sleep(1000);
+                        Console.WriteLine();
 
                         bool Spel = true;
 
@@ -57,8 +67,12 @@ namespace ____
 
                         while (Spel == true)
                         {
-
-
+                            if (SumSpelare < 21 && SumDator < 21)
+                            {
+                                Console.WriteLine("    Vill du dra ett till kort? j/n");
+                                Console.Write("    ");
+                                Dra = Console.ReadLine();
+                            }
 
                             switch (Dra)
                             {
@@ -70,12 +84,8 @@ namespace ____
 
                                     DatorDra = 2;
 
-                                    if (DatorDra == 2)
-                                    {
-                                        SumDator = SumDator + KortDator.Next(1, 11);
-                                    }
                                     Console.WriteLine();
-                                    Console.WriteLine("    Nu kommer du och datorn två kort");
+                                    Console.WriteLine("    Nu kommer du få ett kort");
                                     Thread.Sleep(1000);
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.WriteLine($"    Dina poäng: {SumSpelare}");
@@ -91,15 +101,15 @@ namespace ____
                                     DatorDraKort.Next(1, 3);
                                     DatorDra = DatorDraKort.Next(1, 3);
 
-                                    if (DatorDra == 2)
+                                    if (SumSpelare < 21)
                                     {
                                         SumDator = SumDator + KortDator.Next(1, 11);
                                     }
 
                                     Console.WriteLine();
-                                    Console.WriteLine("    Nu kommer du och datorn få varist kort");
+                                    Console.WriteLine("    Nu kommer datorn få ett kort");
                                     Thread.Sleep(1000);
-                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     Console.WriteLine($"    Dina poäng:{SumSpelare}");
                                     Thread.Sleep(1000);
                                     Console.WriteLine($"    Datorns poäng: {SumDator}");
@@ -121,57 +131,113 @@ namespace ____
                                     break;
                             }
 
-                            if (SumSpelare < 21 && SumDator < 21)
+                            if (SumSpelare == 21 && SumDator < 21)
                             {
-                                Console.WriteLine("    Vill du dra ett till kort? j/n");
-                                Console.WriteLine();
-                                Dra = Console.ReadLine();
+                                SumDator = SumDator + KortDator.Next(1, 11);
+                                Console.WriteLine("    Nu kommer datorn få ett kort");
+                                Thread.Sleep(1000);
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine($"    Dina poäng:{SumSpelare}");
+                                Thread.Sleep(1000);
+                                Console.WriteLine($"    Datorns poäng: {SumDator}");
+                                Console.ForegroundColor = ConsoleColor.Green;
+
+                                if (SumSpelare == 21 && SumDator != 21)
+                                {
+                                    Console.WriteLine("    Du har vunnit!!!");
+                                    Console.WriteLine();
+                                    Console.WriteLine();
+                                    Console.Write("Skriv ditt namn: ");
+
+                                    if (Vinnarna[0] == "...")
+                                    {
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    else if (Vinnarna[1] == "..." && Vinnarna[0] != "...")
+                                    {
+                                        Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    else if (Vinnarna[2] == "..." && Vinnarna[1] != "...")
+                                    {
+                                        Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    else if (Vinnarna[2] != "...")
+                                    {
+                                        Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    Spel = false;
+                                }
+
+                                else if(SumSpelare < 21 && SumDator > 21)
+                                {
+                                    Console.WriteLine("    Du har vunnit!!!");
+                                    Console.WriteLine();
+                                    Console.WriteLine();
+                                    Console.Write("Skriv ditt namn: ");
+
+                                    if (Vinnarna[0] == "...")
+                                    {
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    else if (Vinnarna[1] == "..." && Vinnarna[0] != "...")
+                                    {
+                                        Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    else if (Vinnarna[2] == "..." && Vinnarna[1] != "...")
+                                    {
+                                        Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    else if (Vinnarna[2] != "...")
+                                    {
+                                        Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
+                                        Vinnarna[0] = Console.ReadLine();
+                                    }
+
+                                    Spel = false;
+                                }
+
+                           
                             }
 
-                            if (SumSpelare == 21 || SumDator > 21)
+                            if(SumDator == 21 && SumSpelare < 21)
                             {
-                                Console.WriteLine("    Du har vunnit!!!");
+                                SumSpelare = SumSpelare + KortSpelare.Next(1, 11);
                                 Console.WriteLine();
+                                Console.WriteLine("    Nu kommer du få ett kort");
+                                Thread.Sleep(1000);
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine($"    Dina poäng: {SumSpelare}");
+                                Thread.Sleep(1000);
+                                Console.WriteLine($"    Datorns poäng: {SumDator}");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Thread.Sleep(1000);
                                 Console.WriteLine();
-                                Console.Write("Skriv ditt namn: ");
 
-                                if (Vinnarna[0] == "Tom")
+                                if (SumDator == 21 && SumSpelare != 21)
                                 {
-                                    Vinnarna[0] = Console.ReadLine();
+                                    Console.WriteLine("    Du förlorade, datorn vann :(");
+                                    Console.WriteLine();
+                                    Console.WriteLine();
+                                    Spel = false;
                                 }
-
-                                else if (Vinnarna[1] == "Tom" && Vinnarna[0] != "Tom")
-                                {
-                                    Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
-                                    Vinnarna[0] = Console.ReadLine();
-                                }
-
-                                else if (Vinnarna[2] == "Tom" && Vinnarna[1] != "Tom")
-                                {
-                                    Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
-                                    Vinnarna[0] = Console.ReadLine();
-                                }
-
-                                else if (Vinnarna[2] != "Tom")
-                                {
-                                    Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
-                                    Vinnarna[0] = Console.ReadLine();
-                                }
-
-                                Spel = false;
-                            }
-
-                            else if (SumDator == 21 || SumSpelare > 21)
-                            {
-
-                                Console.WriteLine("    Du förlorade, datorn vann :(");
-                                Console.WriteLine();
-                                Console.WriteLine();
-                                Spel = false;
                             }
                         }
+                        Console.WriteLine();
+                        Console.WriteLine();
                         Thread.Sleep(1000);
-                        Console.WriteLine("Tryck enter för meny");
+                        Console.Write("Tryck enter för meny");
                         Console.ReadLine();
                         Console.Clear();
                         break;
@@ -220,7 +286,7 @@ namespace ____
 
                         Console.WriteLine();
                         Console.WriteLine();
-                        Console.WriteLine("Tryck enter för meny");
+                        Console.Write("Tryck enter för meny");
                         Console.ReadLine();
                         Console.Clear();
                         break;
@@ -245,7 +311,7 @@ namespace ____
                         Thread.Sleep(1000);
                         Console.WriteLine();
                         Console.WriteLine();
-                        Console.WriteLine("Tryck enter för meny");
+                        Console.Write("    Tryck enter för meny");
                         Console.ReadLine();
                         Console.Clear();
                         break;
@@ -281,8 +347,7 @@ namespace ____
                         Console.WriteLine();
                         Console.WriteLine();
                         Console.WriteLine();
-                        Console.WriteLine("░░░░░░░░░░░░░░░░▓██████▓▓▓░░░░░░░░░░░░░░░\r\n░░░░░░░░░░░░░█████▓▓█████████▓░░░░░░░░░░░\r\n░░░░░░░░░░█████▓░░▓█████████████░░░░░░░░░\r\n░░░░░░░░▓███▓░░░▓█████████████████░░░░░░░\r\n░░░░░░░███▓░░░░░███████████████████▓░░░░░\r\n░░░░░░███░░░░░░██████████████████████░░░░\r\n░░░░░███░░░░░░░███████████████████████░░░\r\n░░░░███░░░░░░░░███████░░░░██████████▓█▓░░\r\n░░░███▓░░░░░░░░███████░░░░▓██████████▓█░░\r\n░░▓███░░░░░░░░░░██████▓░░▓███████████▓██░\r\n░░████░░░░░░░░░░▓████████████████████▓▓█░\r\n░▓█░█▓░░░░░░░░░░░░████████████████████░██\r\n░██░█░░░░░░░░░░░░░░▓██████████████████░██\r\n░█▓░█░░░░░░░░░░░░░░░░░▓███████████████░▓█\r\n▓█▓░█▓░░░░░░░░░░░░░░░░░░██████████████░░█\r\n██░░██░░░░░░░░░░░▓▓░░░░░░▓████████████░░█\r\n██░▓░█░░░░░░░░░░████▓░░░░░███████████▓░░█\r\n██░█░██░░░░░░░░▓█████░░░░░░██████████░░▓█\r\n██░▓█░██░░░░░░░░████▓░░░░░░█████████░░▓▓█\r\n▓█░░█░░█▓░░░░░░░░▓▓░░░░░░░░████████▓░░▓██\r\n░█░░█▓░▓██░░░░░░░░░░░░░░░░░███████▓░░█▓█▓\r\n░██░███████▓░░░░░░░░░░░░░░██████████▓█▓█░\r\n░▓█░██▓░░░▓███░░░░░░░░░░▓██████▓░░░▓██▓█░\r\n░░███▓░░░░░░░███████████████▓░░░░░░░░██▓░\r\n░░░██░░▓▓█▓▓▓░░░▓████████▓░░░░▓▓█▓▓░░██░░\r\n░░░▓█░████████▓░░░░░░░░░░░░▓████████░▓█░░\r\n░░░█▓▓███████████░░░░░░░░████████████░█▓░\r\n░░░█░█████████████░░░░░░█████████████░██░\r\n░░▓█░▓████████████░░░░░░█████████████░░█░\r\n░░▓█░▓▓███████████░░░░░░███████████▓▓░░█░\r\n░░▓█░░░▓█████████░░░░░░░░█████████▓░░░░█░\r\n░░░█▓░░░████████░░░░░░░░░░████████░░░░██░\r\n░░░██░░░░░█████░░░░████░░░░█████▓░░░░░█▓░\r\n░░░░██░░░░░░░░░░░░██████░░░░░░░░░░▓░░██░░\r\n░░░░▓████▓░░░░░░░░███▓██▓░░░░░░░░█████░░░\r\n░░░░░▓█▓████▓░░░░░██░▓▓██░░░░▓████░██░░░░\r\n░░░░░░░░▓█▓██░▓░░░██▓▓▓██░░█▓█████░░░░░░░\r\n░░░░░░░░▓█░███▓░░░▓▓▓░▓░░░░░█▓██▓█░░░░░░░\r\n░░░░░░░░▓█░██▓░░▓░░░░░░░░░▓░███▓▓█░░░░░░░\r\n░░░░░░░░▓█░███▓███▓░░░░░▓███▓██░▓█░░░░░░░\r\n░░░░░░░░██░░██░▓░█████████░▓▓█▓░▓█░░░░░░░\r\n░░░░░░░░▓█░░▓██▓▓░░▓░█░█░▓░▓██░░░█░░░░░░░\r\n░░░░░░░░░█▓░░████░▓░░▓░░▓▓███░░░██░░░░░░░\r\n░░░░░░░░░▓█▓░░████████▓█████░░░██▓░░░░░░░\r\n░░░░░░░░░░░██░░▓▓▓▓▓▓▓▓▓▓▓█░░░██░░░░░░░░░\r\n░░░░░░░░░░░░██░░▓█████▓██▓░░▓██░░░░░░░░░░\r\n░░░░░░░░░░░░░██░░░░░▓▓░░░░░███░░░░░░░░░░░\r\n░░░░░░░░░░░░░░██░░░░░░░░░░██▓░░░░░░░░░░░░\r\n");
-
+                        Console.WriteLine("────────▄▄▄▄▄▄▄▄▄\r\n────────▌▐░▀░▀░▀▐\r\n────────▌░▌░░░░░▐\r\n────────▌░░░░░░░▐\r\n────────▄▄▄▄▄▄▄▄▄\r\n──▄▀▀▀▀▀▌▄█▄░▄█▄▐▀▀▀▀▀▄\r\n─█▒▒▒▒▒▐░░░░▄░░░░▌▒▒▒▒▒█\r\n▐▒▒▒▒▒▒▒▌░░░░░░░▐▒▒▒▒▒▒▒▌\r\n▐▒▒▒▒▒▒▒█░▀▀▀▀▀░█▒▒▒▒▒▒▒▌\r\n▐▒▒▒▒▒▒▒▒█▄▄▄▄▄█▒▒▒▒▒▒▒▒▌\r\n▐▒▒▒▒▐▒▒▒▒▒▒▒▒▒▒▒▒▐▒▒▒▒▒▌\r\n▐▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▌\r\n▐▒▒▒▒▒▐▒▒▒▒▒▒▒▒▒▒▒▌▒▒▒▒▒▌\r\n▐▒▒▒▒▒▒▌▒▒▒▒▒▒▒▒▒▐▒▒▒▒▒▒▌\r\n▐▒▒▒▒▒▒▌▄▄▄▄▄▄▄▄▄▐▒▒▒▒▒▒▌\r\n▐▄▄▄▄▄▄▌▌███████▌▐▄▄▄▄▄▄▌\r\n─█▀▀▀▀█─▌███▌███▌─█▀▀▀▀█\r\n─▐░░░░▌─▌███▌███▌─▐░░░░▌\r\n──▀▀▀▀──▌███▌███▌──▀▀▀▀\r\n────────▌███▌███▌\r\n────────▌███▌███▌\r\n──────▐▀▀▀██▌█▀▀▀▌\r\n▒▒▒▒▒▒▐▄▄▄▄▄▄▄▄▄▄▌▒▒▒▒▒▒▒\r\n");
                         Thread.Sleep(1000);
 
                         string text9 = "...";
@@ -292,7 +357,7 @@ namespace ____
                             Thread.Sleep(500);
                         }
 
-                        string text10 = "haha get pranked";
+                        string text10 = "haha";
                         foreach (char c in text10)
                         {
                             Console.Write(c);
@@ -302,7 +367,7 @@ namespace ____
                         Console.WriteLine();
                         Console.WriteLine();
                         Console.WriteLine();
-                        Console.WriteLine("Tryck enter för meny");
+                        Console.Write("Tryck enter för meny");
                         Console.ReadLine();
                         Console.Clear();
                         break;
