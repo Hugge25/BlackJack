@@ -19,19 +19,17 @@ namespace ____
 
             string namn = "Ingen";
 
-            string[] Vinnarna = {"Tom", "Tom", "Tom"};
+            string[] Vinnarna = { "Tom", "Tom", "Tom" };
 
             var value = 1;
 
-            string[] Level = {"Lätt", "Medel", "Svår"};
-
-            while(Avsluta == false)
+            while (Avsluta == false)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine();
                 Console.WriteLine("    -----BLACK JACK-----");
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("    1. Spela BlackJack");
                 Console.WriteLine("    2. De 3 senaste vinnarna");
                 Console.WriteLine("    3. Spelets regler");
@@ -60,7 +58,7 @@ namespace ____
                         while (Spel == true)
                         {
 
-                            
+
 
                             switch (Dra)
                             {
@@ -123,7 +121,7 @@ namespace ____
                                     break;
                             }
 
-                            if(SumSpelare < 21 && SumDator < 21)
+                            if (SumSpelare < 21 && SumDator < 21)
                             {
                                 Console.WriteLine("    Vill du dra ett till kort? j/n");
                                 Console.WriteLine();
@@ -137,11 +135,11 @@ namespace ____
                                 Console.WriteLine();
                                 Console.Write("Skriv ditt namn: ");
 
-                                if(Vinnarna[0] == "Tom")
+                                if (Vinnarna[0] == "Tom")
                                 {
                                     Vinnarna[0] = Console.ReadLine();
                                 }
-                                
+
                                 else if (Vinnarna[1] == "Tom" && Vinnarna[0] != "Tom")
                                 {
                                     Vinnarna = Vinnarna.Skip(value + 1).Concat(Vinnarna.Take(value + 1)).ToArray();
@@ -241,7 +239,7 @@ namespace ____
                             Console.Write(c);
                             Thread.Sleep(30);
                         }
-                        
+
 
 
                         Thread.Sleep(1000);
@@ -280,27 +278,22 @@ namespace ____
 
                     case "69":
                         Console.Clear();
-                        string text8 = "SHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESH";
-                        foreach (char c in text8)
-                        {
-                            Console.Write(c);
-                            Thread.Sleep(10);
-                        }
                         Console.WriteLine();
                         Console.WriteLine();
                         Console.WriteLine();
-                        Console.WriteLine();
+                        Console.WriteLine("░░░░░░░░░░░░░░░░▓██████▓▓▓░░░░░░░░░░░░░░░\r\n░░░░░░░░░░░░░█████▓▓█████████▓░░░░░░░░░░░\r\n░░░░░░░░░░█████▓░░▓█████████████░░░░░░░░░\r\n░░░░░░░░▓███▓░░░▓█████████████████░░░░░░░\r\n░░░░░░░███▓░░░░░███████████████████▓░░░░░\r\n░░░░░░███░░░░░░██████████████████████░░░░\r\n░░░░░███░░░░░░░███████████████████████░░░\r\n░░░░███░░░░░░░░███████░░░░██████████▓█▓░░\r\n░░░███▓░░░░░░░░███████░░░░▓██████████▓█░░\r\n░░▓███░░░░░░░░░░██████▓░░▓███████████▓██░\r\n░░████░░░░░░░░░░▓████████████████████▓▓█░\r\n░▓█░█▓░░░░░░░░░░░░████████████████████░██\r\n░██░█░░░░░░░░░░░░░░▓██████████████████░██\r\n░█▓░█░░░░░░░░░░░░░░░░░▓███████████████░▓█\r\n▓█▓░█▓░░░░░░░░░░░░░░░░░░██████████████░░█\r\n██░░██░░░░░░░░░░░▓▓░░░░░░▓████████████░░█\r\n██░▓░█░░░░░░░░░░████▓░░░░░███████████▓░░█\r\n██░█░██░░░░░░░░▓█████░░░░░░██████████░░▓█\r\n██░▓█░██░░░░░░░░████▓░░░░░░█████████░░▓▓█\r\n▓█░░█░░█▓░░░░░░░░▓▓░░░░░░░░████████▓░░▓██\r\n░█░░█▓░▓██░░░░░░░░░░░░░░░░░███████▓░░█▓█▓\r\n░██░███████▓░░░░░░░░░░░░░░██████████▓█▓█░\r\n░▓█░██▓░░░▓███░░░░░░░░░░▓██████▓░░░▓██▓█░\r\n░░███▓░░░░░░░███████████████▓░░░░░░░░██▓░\r\n░░░██░░▓▓█▓▓▓░░░▓████████▓░░░░▓▓█▓▓░░██░░\r\n░░░▓█░████████▓░░░░░░░░░░░░▓████████░▓█░░\r\n░░░█▓▓███████████░░░░░░░░████████████░█▓░\r\n░░░█░█████████████░░░░░░█████████████░██░\r\n░░▓█░▓████████████░░░░░░█████████████░░█░\r\n░░▓█░▓▓███████████░░░░░░███████████▓▓░░█░\r\n░░▓█░░░▓█████████░░░░░░░░█████████▓░░░░█░\r\n░░░█▓░░░████████░░░░░░░░░░████████░░░░██░\r\n░░░██░░░░░█████░░░░████░░░░█████▓░░░░░█▓░\r\n░░░░██░░░░░░░░░░░░██████░░░░░░░░░░▓░░██░░\r\n░░░░▓████▓░░░░░░░░███▓██▓░░░░░░░░█████░░░\r\n░░░░░▓█▓████▓░░░░░██░▓▓██░░░░▓████░██░░░░\r\n░░░░░░░░▓█▓██░▓░░░██▓▓▓██░░█▓█████░░░░░░░\r\n░░░░░░░░▓█░███▓░░░▓▓▓░▓░░░░░█▓██▓█░░░░░░░\r\n░░░░░░░░▓█░██▓░░▓░░░░░░░░░▓░███▓▓█░░░░░░░\r\n░░░░░░░░▓█░███▓███▓░░░░░▓███▓██░▓█░░░░░░░\r\n░░░░░░░░██░░██░▓░█████████░▓▓█▓░▓█░░░░░░░\r\n░░░░░░░░▓█░░▓██▓▓░░▓░█░█░▓░▓██░░░█░░░░░░░\r\n░░░░░░░░░█▓░░████░▓░░▓░░▓▓███░░░██░░░░░░░\r\n░░░░░░░░░▓█▓░░████████▓█████░░░██▓░░░░░░░\r\n░░░░░░░░░░░██░░▓▓▓▓▓▓▓▓▓▓▓█░░░██░░░░░░░░░\r\n░░░░░░░░░░░░██░░▓█████▓██▓░░▓██░░░░░░░░░░\r\n░░░░░░░░░░░░░██░░░░░▓▓░░░░░███░░░░░░░░░░░\r\n░░░░░░░░░░░░░░██░░░░░░░░░░██▓░░░░░░░░░░░░\r\n");
+
                         Thread.Sleep(1000);
 
                         string text9 = "...";
-                        foreach(char c in text9)
+                        foreach (char c in text9)
                         {
                             Console.Write(c);
                             Thread.Sleep(500);
                         }
 
                         string text10 = "haha get pranked";
-                        foreach(char c in text10)
+                        foreach (char c in text10)
                         {
                             Console.Write(c);
                             Thread.Sleep(100);
@@ -309,8 +302,8 @@ namespace ____
                         Console.WriteLine();
                         Console.WriteLine();
                         Console.WriteLine();
-                        Console.WriteLine(":^)");
-                        Thread.Sleep(500);
+                        Console.WriteLine("Tryck enter för meny");
+                        Console.ReadLine();
                         Console.Clear();
                         break;
 
@@ -319,7 +312,7 @@ namespace ____
                         Console.WriteLine();
                         Thread.Sleep(300);
                         string text11 = "Ej giltigt!";
-                        foreach(char c in text11)
+                        foreach (char c in text11)
                         {
                             Console.Write(c);
                             Thread.Sleep(50);
