@@ -17,7 +17,7 @@ namespace ____
 
             bool Avsluta = false;
 
-            int DuVann = 3;
+            int DuVann = 100;
 
             string[] Vinnarna = { "...", "...", "..." };
 
@@ -67,7 +67,7 @@ namespace ____
 
                         while (Spel == true)
                         {
-                            if (SumDator > 21 || SumSpelare == 21)
+                            if (SumDator >= 22 || SumSpelare == 21)
                             {
                                 DuVann = 1;
                             }
@@ -77,7 +77,7 @@ namespace ____
                                 DuVann = 1;
                             }
 
-                            if (SumSpelare > 21 || SumDator == 21)
+                            if (SumSpelare >= 22 || SumDator == 21)
                             {
                                 DuVann = 0;
                             }
@@ -94,8 +94,9 @@ namespace ____
                             if (SumSpelare == SumDator)
                             {
                                 DuVann = 2;
+
                             }
-  
+
                             if (DuVann == 0 || DuVann == 2)
                             {
                                 Console.WriteLine();
@@ -137,15 +138,16 @@ namespace ____
                                 Spel = false;
                                 break;
                             }
+  
                             
-                            if(Dra != "n")
+                            if(Dra != "n" && DuVann =! 0 || 1 || 2)
                             {
                                 Console.WriteLine("    Vill du dra ett till kort? j/n");
                                 Console.Write("    ");
                                 Dra = Console.ReadLine();
                             }
 
-                            if(Dra == "n" && DatorDra == 1)
+                            if(Dra == "n" && DatorDra == 1 && DuVann =! 0 || 1 || 2)
                             {
                                 SumDator = SumDator + KortSpelare.Next(1, 11);
                                 Console.WriteLine();
@@ -184,7 +186,7 @@ namespace ____
                                     {
                                         SumDator = SumDator + KortSpelare.Next(1, 11);
                                         Console.WriteLine();
-                                        Console.WriteLine("    Datorn väljer att dra kort");
+                                        Console.WriteLine("    Nu kommer datorn få ett kort");
                                         Thread.Sleep(1000);
                                         Console.ForegroundColor = ConsoleColor.White;
                                         Console.WriteLine($"    Dina poäng:{SumSpelare}");
@@ -229,6 +231,8 @@ namespace ____
                                     break;
                             }
                         }
+                        
+                            
 
                         Console.WriteLine();
                         Console.WriteLine();
